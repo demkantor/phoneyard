@@ -4,6 +4,7 @@
     --white-primary: #f3f3f3;
     --dark-primary: #232528;
     --yellow-primary: #ffa400;
+    --tran-primary: all 500ms ease-in-out;
 }
 
 body {

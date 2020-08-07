@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -15,12 +15,12 @@ const App = () => {
         <Router>
             <Navbar />
             <h3>Hello from App</h3>
-            
-                <ProductList />
-                <Details />
-                <Cart />
-                <Default />
-            
+            <Switch>
+                <Route exact path="/" component={ProductList} />
+                <Route exact path="/details" component={Details} />
+                <Route exact path="/cart" component={Cart} />
+                <Route exact path="*" component={Default} />
+            </Switch>
         </Router>  
     );
 };
