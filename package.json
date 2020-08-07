@@ -1,5 +1,7 @@
 {
   "name": "phoneyard",
+  "author": "demkantor",
+  "description": "ecommerce used phone shop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
