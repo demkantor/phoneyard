@@ -14,7 +14,6 @@ const App = () => {
     return (
         <Router>
             <Navbar />
-            <h3>Hello from App</h3>
             <Switch>
                 <Route exact path="/" component={ProductList} />
                 <Route exact path="/details" component={Details} />

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { ProductContext } from '../../context/context';
+import PropTypes from 'prop-types';
 
 const ProductWrapper = styled.div`
     .card {
@@ -76,7 +77,7 @@ const Product = ({ product }) => {
                                     {" "} in cart
                                 </p>
                             :
-                                <i className="fas fa-cart-plus" />
+                                <i className="fas fa-cart-plus" title={"add to cart"} />
                             }
                     </button>
                 </div>
@@ -91,6 +92,16 @@ const Product = ({ product }) => {
             </div>  
         </ProductWrapper>
     );
+};
+
+Product.propTypes = {
+    product: PropTypes.shape({
+        id: PropTypes.number,
+        img: PropTypes.string,
+        inCart: PropTypes.bool,
+        price: PropTypes.number,
+        title: PropTypes.string
+    }).isRequired
 };
 
 export default Product;
