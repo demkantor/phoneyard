@@ -1,11 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Product from './Product';
 import Title from '../../Styles/Title';
 import { ProductContext } from '../../context/context';
 
 const ProductList = () => {
 
-    const { products } = useContext(ProductContext);
+    const { products, handleDetails, addToCart } = useContext(ProductContext);
+
+    handleDetails();
+    addToCart();
 
     return (
         // <Product />
@@ -18,7 +21,9 @@ const ProductList = () => {
                         />
                     <div className="row">
                         { products.map(product => (
-                            <h3>{product.title}</h3>
+                            <Product 
+                                key={product.id} 
+                                product={product} />
                         )) }
                     </div>
                 </div>
