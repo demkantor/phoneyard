@@ -1,12 +1,12 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { storeProducts, detailProduct } from './data';
+import { storeProducts } from './data';
 
 const ProductContext = createContext();
 
 
 
 const ProductProvider = ({ children }) => {
-    const [detailedProduct, setDetailedProduct] = useState(detailProduct);
+    const [detailedProduct, setDetailedProduct] = useState({});
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -22,13 +22,18 @@ const ProductProvider = ({ children }) => {
         setOurProducts();
     }, []);
 
-    
-    const handleDetails = (id) => {
-        console.log('hello from handle detail', id);
-    };
-
     const addToCart = (id) => {
         console.log('hello from add to cart', id);
+    };
+
+    const getItem = (id) => {
+        const product = products.find(item => item.id === id);
+        return product
+    };
+
+    const handleDetails = (id) => {
+        const product = getItem(id);
+        setDetailedProduct(product);
     };
 
     return (

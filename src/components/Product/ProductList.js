@@ -5,30 +5,24 @@ import { ProductContext } from '../../context/context';
 
 const ProductList = () => {
 
-    const { products, handleDetails, addToCart } = useContext(ProductContext);
-
-    handleDetails();
-    addToCart();
+    const { products } = useContext(ProductContext);
 
     return (
-        // <Product />
-        <>
-            <div className="py-5">
-                <div className="container">
-                    <Title 
-                        name={"our"}
-                        title={"products"} 
-                        />
-                    <div className="row">
-                        { products.map(product => (
-                            <Product 
-                                key={product.id} 
-                                product={product} />
-                        )) }
-                    </div>
+        <div className="py-5">
+            <div className="container">
+                <Title 
+                    name={"our"}
+                    title={"products"} 
+                    />
+                <div className="row">
+                    { products.map(product => (
+                        <Product 
+                            key={product.id} 
+                            product={product} />
+                    )) }
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
