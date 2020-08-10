@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ProductContext } from '../../context/context';
 import Title from '../../Styles/Title';
 import CartColumns from './CartColumns';
 import EmptyCart from './EmptyCart';
-import { ProductContext } from '../../context/context';
+import CartList from './CartList';
+
 
 
 const Cart = () => {
@@ -18,6 +20,7 @@ const Cart = () => {
             <>
                 <Title name="your" title="cart" />
                 <CartColumns />
+                <CartList cart={cart} />
             </>
             :
                 <EmptyCart />
