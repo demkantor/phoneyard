@@ -4,11 +4,12 @@ import { storeProducts } from './data';
 const ProductContext = createContext();
 
 
-
 const ProductProvider = ({ children }) => {
     const [detailedProduct, setDetailedProduct] = useState({});
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalProduct, setModalProduct] = useState('');
 
     useEffect(() => {
         const setOurProducts = () => {
@@ -37,6 +38,10 @@ const ProductProvider = ({ children }) => {
         setCart([...cart, product]);
     };
 
+    const closeModal = () => {
+        setModalOpen(false);
+    };
+
     const getItem = (id) => {
         const product = products.find(item => item.id === id);
         return product
@@ -47,14 +52,27 @@ const ProductProvider = ({ children }) => {
         setDetailedProduct(product);
     };
 
+    const openModal = (id) => {
+        const product = getItem(id);
+        setModalProduct(product);
+        setModalOpen(true);
+    };
+
     return (
-        <ProductContext.Provider value={{ addToCart, cart, detailedProduct, handleDetails, products }}>
+        <ProductContext.Provider value={{ 
+            addToCart, 
+            cart, 
+            closeModal, 
+            detailedProduct, 
+            handleDetails, 
+            openModal, 
+            modalOpen,
+            modalProduct,
+            products 
+        }}>
             { children }
         </ProductContext.Provider>
     );
 };
-
-
-// const ProductConsumer = createContext.consumer;
 
 export { ProductProvider, ProductContext };

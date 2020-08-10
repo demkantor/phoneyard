@@ -5,7 +5,7 @@ import ButtonContainer from '../../Styles/Button';
 
 
 const Details = () => {
-    const { addToCart, detailedProduct } = useContext(ProductContext);
+    const { addToCart, detailedProduct, openModal } = useContext(ProductContext);
     const { company, id, img, inCart, info, price, title } = detailedProduct;
 
     return (
@@ -47,7 +47,7 @@ const Details = () => {
                         <ButtonContainer 
                             cart
                             disabled={inCart ? true : false}
-                            onClick={()=>addToCart(id)}>
+                            onClick={()=>{addToCart(id); openModal(id);}}>
                                 {inCart ? "in Cart" : "add to cart"}
                         </ButtonContainer>
                     </div>

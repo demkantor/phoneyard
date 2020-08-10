@@ -58,7 +58,7 @@ const ProductWrapper = styled.div`
 
 const Product = ({ product }) => {
     const { id, img, inCart, price, title } = product;
-    const { addToCart, handleDetails } = useContext(ProductContext);
+    const { addToCart, handleDetails, openModal } = useContext(ProductContext);
 
     return (
         <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
@@ -73,7 +73,7 @@ const Product = ({ product }) => {
                         <button 
                             className="cart-btn"
                             disabled={inCart ? true : false}
-                            onClick={()=>addToCart(id)}>
+                            onClick={()=>{addToCart(id); openModal(id);}}>
                                 {inCart
                                 ?
                                     <p className="text-capitalize mb=0" disabled title={"already in cart"}>
