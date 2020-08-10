@@ -5,11 +5,15 @@ const ProductContext = createContext();
 
 
 const ProductProvider = ({ children }) => {
+    const [cart, setCart] = useState(storeProducts);
+    const [cartSubtotal, setCartSubtotal] = useState(0);
+    const [cartTax, setCartTax] = useState(0);
+    const [cartTotal, setCartTotal] = useState(0);
     const [detailedProduct, setDetailedProduct] = useState({});
-    const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
     const [modalProduct, setModalProduct] = useState('');
+    const [products, setProducts] = useState([]);
+
 
     useEffect(() => {
         const setOurProducts = () => {
@@ -38,8 +42,16 @@ const ProductProvider = ({ children }) => {
         setCart([...cart, product]);
     };
 
+    const clearCart = () => {
+        console.log('cart emptied!');
+    };
+
     const closeModal = () => {
         setModalOpen(false);
+    };
+
+    const decrement = (id) => {
+        console.log('decrement ', id)
     };
 
     const getItem = (id) => {
@@ -52,23 +64,38 @@ const ProductProvider = ({ children }) => {
         setDetailedProduct(product);
     };
 
+    const increment = (id) => {
+        console.log('increment ', id)
+    };
+
     const openModal = (id) => {
         const product = getItem(id);
         setModalProduct(product);
         setModalOpen(true);
     };
 
+    const removeItem = (id) => {
+        console.log('remove item', id)
+    };
+
     return (
         <ProductContext.Provider value={{ 
             addToCart, 
             cart, 
-            closeModal, 
+            cartSubtotal,
+            cartTax,
+            cartTotal,
+            clearCart,
+            closeModal,
+            decrement, 
             detailedProduct, 
             handleDetails, 
+            increment,
             openModal, 
             modalOpen,
             modalProduct,
-            products 
+            products,
+            removeItem
         }}>
             { children }
         </ProductContext.Provider>

@@ -21,13 +21,13 @@ const ModalContainer = styled.div`
 `;
 
 const Modal = () => {
-    const { addToCart, closeModal, detailedProduct, openModal, modalOpen, modalProduct } = useContext(ProductContext);
+    const { closeModal, modalOpen, modalProduct } = useContext(ProductContext);
     const { img, price, title } = modalProduct;
 
     return (
         modalOpen 
         ?
-        <ModalContainer>
+        <ModalContainer onClick={closeModal}>
             <div className="container">
                 <div className="row">
                     <div id="modal" className="col-8 mx-auto col-md-6 col-lg-4 p-5 text-center text-capitalize">
