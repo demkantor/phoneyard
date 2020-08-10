@@ -57,8 +57,20 @@ const ProductProvider = ({ children }) => {
         setModalOpen(false);
     };
 
-    const decrement = (id) => {
-        console.log('decrement ', id)
+    const decrement = async (id) => {
+        let tempCart = [...cart];
+        const selectedProduct = tempCart.find(item => item.id === id);
+        const index = tempCart.indexOf(selectedProduct);
+        const product = tempCart[index];
+
+        product.count = product.count - 1;
+        if(product.count === 0) {
+            removeItem(id)
+        } else {
+            product.total = product.count * product.price;
+            await setCart([...tempCart]);
+            await addTotals();
+        };
     };
 
     const getItem = (id) => {
@@ -71,8 +83,17 @@ const ProductProvider = ({ children }) => {
         setDetailedProduct(product);
     };
 
-    const increment = (id) => {
-        console.log('increment ', id)
+    const increment = async (id) => {
+        let tempCart = [...cart];
+        const selectedProduct = tempCart.find(item => item.id === id);
+        const index = tempCart.indexOf(selectedProduct);
+        const product = tempCart[index];
+
+        product.count = product.count + 1;
+        product.total = product.count * product.price;
+
+        await setCart([...tempCart]);
+        await addTotals();
     };
 
     const openModal = (id) => {
