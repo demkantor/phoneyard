@@ -47,3 +47,33 @@ body {
     font-size: 1.2rem;
     color: var(--yellow-primary);
 }
+
+.hero {
+    height: calc(100vh - 66px);
+    width: 100vw;
+    background-image: url(https://images.unsplash.com/photo-1513611771808-7e8ab7f1dec6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    overflow: hidden;
+}
+
+.middle {
+    position: absolute !important;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+@media only screen and (max-width: 600px) {
+    .middle {
+        top: 55%;
+    }
+
+    .hide {
+        display: none;
+    }
+}

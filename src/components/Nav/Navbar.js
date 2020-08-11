@@ -22,11 +22,11 @@ const Navbar = () => {
             https://www.iconfinder.com/Makoto_msk 
             */}
             <Link to="/">
-                <img title="phoneyard inventory" src={logo} alt="store" className="nav-brand" />
+                <img title="about phoneyard" src={logo} alt="store" className="nav-brand" />
             </Link>
             <ul className="navbar-nav align-items-center">
                 <li className="nav-item ml-5">
-                    <Link to="/" className="nav-link">
+                    <Link to="/products" className="nav-link">
                         products
                     </Link>
                 </li>

@@ -39,7 +39,7 @@ const Details = () => {
                         {info}
                     </p>
                     <div>
-                        <Link to="/">
+                        <Link to="/products">
                             <ButtonContainer>
                                 back to products
                             </ButtonContainer>
