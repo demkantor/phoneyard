@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductContext } from '../../context/context';
+import PayPalBtn from './PayPal';
 
-const CartTotals = () => {
+const CartTotals = (props) => {
     const { cartSubtotal, cartTax, cartTotal, clearCart } = useContext(ProductContext);
 
     return (
@@ -36,6 +37,10 @@ const CartTotals = () => {
                             </span>
                             <strong>${cartTotal}</strong>
                         </h5>
+                        <PayPalBtn
+                            clearCart={clearCart}
+                            total={cartTotal}
+                            history={props.history} />
                     </div>
                 </div>
             </div>
