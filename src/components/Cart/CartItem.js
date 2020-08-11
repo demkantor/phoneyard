@@ -22,7 +22,7 @@ const CartItem = ({ item }) => {
                         <span title="remove one" className="btn btn-black mx-1" onClick={()=>decrement(id)}>
                             -
                         </span>
-                        <span className="btn btn-black mx-1">
+                        <span title={`quantity of ${title}'s in cart`} className="btn btn-black mx-1">
                             {count}
                         </span>
                         <span title="add another" className="btn btn-black mx-1" onClick={()=>increment(id)}>

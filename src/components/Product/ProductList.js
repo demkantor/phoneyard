@@ -12,7 +12,7 @@ const ProductList = () => {
             <div className="container">
                 <Title 
                     name={"our"}
-                    title={"products"} 
+                    title={"current phones"} 
                     />
                 <div className="row">
                     { products.map(product => (

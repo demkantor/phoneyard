@@ -5,7 +5,7 @@ import PaypalExpressBtn from 'react-paypal-express-checkout';
 class PayPalBtn extends Component {
 
     render() {
-        console.log(this.props)
+
         const onSuccess = (payment) => {
             // Congratulation, it came here means everything's fine!
             console.log("The payment was successful!", payment);

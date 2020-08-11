@@ -22,7 +22,7 @@ const Navbar = () => {
             https://www.iconfinder.com/Makoto_msk 
             */}
             <Link to="/">
-                <img src={logo} alt="store" className="nav-brand" />
+                <img title="phoneyard inventory" src={logo} alt="store" className="nav-brand" />
             </Link>
             <ul className="navbar-nav align-items-center">
                 <li className="nav-item ml-5">
@@ -31,7 +31,7 @@ const Navbar = () => {
                     </Link>
                 </li>
             </ul>
-            <Link to="/cart" className="ml-auto">
+            <Link title="head to cart" to="/cart" className="ml-auto">
                 <ButtonContainer>
                     <span className="mr-2">
                         <i className="fas fa-cart-plus" />

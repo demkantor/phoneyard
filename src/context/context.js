@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { storeProducts } from './data';
 
 const ProductContext = createContext();
@@ -20,24 +20,26 @@ const ProductProvider = ({ children }) => {
 
     }, []);
 
+
+
     const addToCart = async (id) => {
         let tempProducts = [...products];
-        const index = await tempProducts.indexOf(getItem(id));
-        const product = await tempProducts[index];
+        const index = tempProducts.indexOf(getItem(id));
+        const product = tempProducts[index];
 
         product.inCart = true;
         product.count = 1;
         const price = product.price;
         product.total = price;
 
-        await setProducts(tempProducts);
-        await setCart([...cart, product]);
-        await addTotals();
+        setProducts(tempProducts);
+        setCart([...cart, product]);
+        
     };
 
-    const addTotals = async () => {
+    const addTotals = useCallback(async () => {
         let subtotal = 0;
-        await cart.map(item =>(subtotal += item.total));
+        cart.map(item =>(subtotal += item.total));
         /////////////////// set tax rate here ///////////current = 0.075///////////////
         const tempTax = subtotal * 0.075;
         const tax = parseFloat(tempTax.toFixed(2));
@@ -45,7 +47,13 @@ const ProductProvider = ({ children }) => {
         await setCartSubtotal(subtotal);
         await setCartTax(tax);
         await setCartTotal(total);
-    }
+    }, [cart]);
+
+    useEffect(() => {
+        if (cart.length >= 1) {
+            addTotals();
+        }
+    }, [addTotals, cart]);
 
     const clearCart = () => {
         setCart([]);
