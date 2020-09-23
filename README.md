@@ -12,4 +12,4 @@
     paypal sandbox
 
 
-Try it out here! [GitHub User Search](https://phoneyard.netlify.app/).
+Try it out here! [Phoneyard](https://phoneyard.netlify.app/).
